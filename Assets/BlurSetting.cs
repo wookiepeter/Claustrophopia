@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BlurSetting : MonoBehaviour {
 	public GameObject mainCamera;
+	public AudioSource breathe1;
 	public AudioSource breathe2;
 	public AudioSource breathe3;
 	private UnityStandardAssets.ImageEffects.BlurOptimized BlurOptimized;
@@ -28,6 +29,9 @@ public class BlurSetting : MonoBehaviour {
 		{
 			BlurOptimized.blurSize = Mathf.PingPong(Time.time * speed, 3.33f);
 			MotionBlur.blurAmount = Mathf.PingPong(Time.time * speed, 0.33f);
+			breathe1.enabled = true;
+			breathe2.enabled = false;
+			breathe3.enabled = false;
 		}
 		// Zone 2
 		if(zone2)
@@ -37,6 +41,7 @@ public class BlurSetting : MonoBehaviour {
 			MotionBlur.blurAmount = Mathf.PingPong(Time.time * speed, 0.66f);
 			FishEye.strengthX = Mathf.PingPong(Time.time * speedFishEye, 0.1f);
 			FishEye.strengthY = Mathf.PingPong(Time.time * speedFishEye, 0.1f);
+			breathe1.enabled = false;
 			breathe2.enabled = true;
 			breathe3.enabled = false;
 		}
@@ -48,6 +53,7 @@ public class BlurSetting : MonoBehaviour {
 			MotionBlur.blurAmount = Mathf.PingPong(Time.time * speed, 0.92f);
 			FishEye.strengthX = Mathf.PingPong(Time.time * speedFishEye, 0.3f);
 			FishEye.strengthY = Mathf.PingPong(Time.time * speedFishEye, 0.3f);
+			breathe1.enabled = false;
 			breathe2.enabled = false;
 			breathe3.enabled = true;
 		}

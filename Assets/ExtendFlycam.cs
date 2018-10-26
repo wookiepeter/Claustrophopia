@@ -30,16 +30,21 @@ public class ExtendFlycam : MonoBehaviour
 	private float rotationX = 0.0f;
 	private float rotationY = 0.0f;
 	private float lockY;
+	private float lockXRot;
+	private float lockZRot;
  
 	void Start ()
 	{
 		lockY = transform.position.y;
+		//lockXRot = transform.localRotation.x;
+		//lockZRot = transform.localRotation.z;
 		Screen.lockCursor = true;
 	}
  
 	void Update ()
 	{
 		transform.position = new Vector3 (transform.position.x, lockY, transform.position.z);
+		//transform.localRotation = new Quaternion(lockXRot, transform.localRotation.y, lockZRot, transform.localRotation.w);
 
 		rotationX += Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
 		rotationY += Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
