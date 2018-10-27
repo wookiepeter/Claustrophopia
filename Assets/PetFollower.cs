@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostFollower : MonoBehaviour {
+public class PetFollower : MonoBehaviour {
     public GameObject Player;
     public float TargetDistance;
     public float AllowedDistance;
     public GameObject Ghost;
     public float FollowSpeed;
-    public RaycastHit Shot;
 
 	void Update () {
         transform.LookAt(Player.transform);
-        if (Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward),out Shot))
-        {
-            TargetDistance = Shot.distance;
+
+
+        TargetDistance = Vector3.Distance(Player.transform.position, Ghost.transform.position);
             if (TargetDistance >= AllowedDistance)
             {
                 FollowSpeed = 0.1f;
@@ -28,6 +27,6 @@ public class GhostFollower : MonoBehaviour {
                 Ghost.GetComponent<Animation>().Play("ghost_idle");
                 print("idle");
             }
-        }
+        
 	}
 }
