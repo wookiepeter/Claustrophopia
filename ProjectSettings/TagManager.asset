@@ -7,6 +7,8 @@ TagManager:
   - Zone_1
   - Zone_2
   - Zone_3
+  - Key
+  - Door
   layers:
   - Default
   - TransparentFX

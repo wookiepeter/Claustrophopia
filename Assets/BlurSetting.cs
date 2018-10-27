@@ -12,11 +12,15 @@ public class BlurSetting : MonoBehaviour {
 	private UnityStandardAssets.ImageEffects.BlurOptimized BlurOptimized;
 	private UnityStandardAssets.ImageEffects.MotionBlur MotionBlur;
 	private UnityStandardAssets.ImageEffects.Fisheye FishEye;
-	public float speed = 1f;
-	public float speedFishEye = 0.75f;
+	private float speed = 1f;
+	private float speedFishEye = 0.75f;
 	public bool zone1 = false;
 	public bool zone2 = false;
 	public bool zone3 = false;
+	private bool zoneKey = false;
+	private bool zoneDoor = false;
+	private bool keyInHand = false;
+	private GameObject key;
 	private float timerZone1 = 0;
 	private float timerZone2 = 0;
 	private float timerZone3 = 0;
@@ -82,6 +86,22 @@ public class BlurSetting : MonoBehaviour {
 		}
 		// Game over
 		if(timerZone3 > 10) Debug.Log("Game over");
+		// Key
+		if(!keyInHand && zoneKey && Input.GetKeyDown(KeyCode.G)) 
+		{
+			GameObject.Find("[Key] - Press G to put the key").GetComponent<UnityEngine.UI.Text>().enabled = false;
+			zoneKey = false;
+			keyInHand = true;
+			key.SetActive(false);
+			key = null;
+		}
+		if(keyInHand && zoneDoor && Input.GetKeyDown(KeyCode.G)) 
+		{
+			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = false;
+			GameObject.Find("[Door] - Animator").GetComponent<Animator>().SetTrigger("CloseDoor");
+			zoneDoor = false;
+			keyInHand = false;
+		}
 	}
 	private void OnTriggerEnter(Collider other)
     {
@@ -103,5 +123,30 @@ public class BlurSetting : MonoBehaviour {
 			zone2 = false;
 			zone3 = true;
 		}
+		if(other.tag == "Key")
+		{
+			zoneKey = true;
+			GameObject.Find("[Key] - Press G to put the key").GetComponent<UnityEngine.UI.Text>().enabled = true;
+			key = other.gameObject;
+		}
+		if(other.tag == "Door")
+		{
+			zoneDoor = true;
+			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = true;
+		}
     }
+	private void OnTriggerExit(Collider other)
+    {
+		if(other.tag == "Key")
+		{
+			zoneKey = false;
+			GameObject.Find("[Key] - Press G to put the key").GetComponent<UnityEngine.UI.Text>().enabled = false;
+			key = null;
+		}
+		if(other.tag == "Door")
+		{
+			zoneDoor = false;
+			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = false;
+		}
+	}
 }
