@@ -23,6 +23,7 @@ public class CharakterSetting : MonoBehaviour {
 	private bool zoneDoor = false;
 	private bool keyInHand = false;
 	private GameObject key;
+	private bool doorOpened = false;
 	private float timerZone1 = 0;
 	private float timerZone2 = 0;
 	private float timerZone3 = 0;
@@ -116,10 +117,20 @@ public class CharakterSetting : MonoBehaviour {
 		if(keyInHand && zoneDoor && Input.GetKeyDown(KeyCode.G)) 
 		{
 			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = false;
-			GameObject.Find("[Door] - Animator").GetComponent<Animator>().SetTrigger("CloseDoor");
-			zoneDoor = false;
+			GameObject.Find("[Door] - Animator").GetComponent<Animator>().SetTrigger("OpenDoor");
 			keyInHand = false;
+			doorOpened = true;
 			clown1.enabled = true;
+		}
+		if(doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
+		{
+			if(GameObject.Find("[Door] - Animator").transform.localPosition == new Vector3(-2.69f,
+			GameObject.Find("[Door] - Animator").transform.localPosition.y,
+			GameObject.Find("[Door] - Animator").transform.localPosition.z))
+			{
+				GameObject.Find("[Door] - Animator").GetComponent<Animator>().SetTrigger("CloseDoor");
+				doorOpened = false;
+			}
 		}
 	}
 	private void OnTriggerEnter(Collider other)
@@ -167,5 +178,9 @@ public class CharakterSetting : MonoBehaviour {
 			zoneDoor = false;
 			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = false;
 		}
+	}
+	private void ClownLaughing()
+	{
+
 	}
 }
