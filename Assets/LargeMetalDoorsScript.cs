@@ -5,7 +5,7 @@ using UnityEngine;
 public class LargeMetalDoorsScript : MonoBehaviour {
 	private bool zoneDoor = false;
 	private bool doorOpened = false;
-
+	private bool warten = true;
 
 	// Use this for initialization
 	void Start () {
@@ -15,12 +15,12 @@ public class LargeMetalDoorsScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Door - Hebel
-		if(!doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
+		if(!warten && !doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
 		{
 				GetComponent<Animator>().SetTrigger("LargeDoorOpen");
 				StartCoroutine(WaitDoor());
 		}
-		if(doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
+		if(!warten && doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
 		{
 				GetComponent<Animator>().SetTrigger("LargeDoorClose");
 				StartCoroutine(WaitDoor());
@@ -44,7 +44,9 @@ public class LargeMetalDoorsScript : MonoBehaviour {
 	}
 	private IEnumerator WaitDoor()
 	{
+		warten = true;
 		yield return new WaitForSeconds(1f);
+		warten = false;
 		if(!doorOpened) 
 		{
 			doorOpened = true;
