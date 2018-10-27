@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlurSetting : MonoBehaviour {
+public class CharakterSetting : MonoBehaviour {
 	public GameObject mainCamera;
+	private GameObject flashLight;
 	public AudioSource breathe1;
 	public AudioSource breathe2;
 	public AudioSource breathe3;
 	public AudioSource heart1;
 	public AudioSource heart2;
+	public AudioSource clown1;
 	private UnityStandardAssets.ImageEffects.BlurOptimized BlurOptimized;
 	private UnityStandardAssets.ImageEffects.MotionBlur MotionBlur;
 	private UnityStandardAssets.ImageEffects.Fisheye FishEye;
@@ -21,6 +23,7 @@ public class BlurSetting : MonoBehaviour {
 	private bool zoneDoor = false;
 	private bool keyInHand = false;
 	private GameObject key;
+	private bool doorOpened = false;
 	private float timerZone1 = 0;
 	private float timerZone2 = 0;
 	private float timerZone3 = 0;
@@ -29,6 +32,7 @@ public class BlurSetting : MonoBehaviour {
 		BlurOptimized = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.BlurOptimized>();
 		MotionBlur = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>();
 		FishEye = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.Fisheye>();
+		flashLight = GameObject.Find("[FlashLight]");
 	}
 	
 	// Update is called once per frame
@@ -47,6 +51,11 @@ public class BlurSetting : MonoBehaviour {
 			breathe3.enabled = false;
 			heart1.enabled = true;
 			heart2.enabled = false;
+			flashLight.GetComponent<Light>().intensity = 1;
+			// Velocity settings
+			GetComponent<ExtendFlycam>().climbSpeed = 2;
+			GetComponent<ExtendFlycam>().climbSpeed = 5;
+			GetComponent<ExtendFlycam>().cameraSensitivity = 90;
 		}
 		// Zone 2
 		if(zone2)
@@ -65,6 +74,11 @@ public class BlurSetting : MonoBehaviour {
 			heart1.enabled = false;
 			heart2.pitch = 1;
 			heart2.enabled = true;
+			flashLight.GetComponent<Light>().intensity = Random.RandomRange(0.5f, 1.0f);
+			// Velocity settings
+			GetComponent<ExtendFlycam>().climbSpeed = 1.5f;
+			GetComponent<ExtendFlycam>().climbSpeed = 3.5f;
+			GetComponent<ExtendFlycam>().cameraSensitivity = 75;
 		}
 		// Zone 3
 		if(zone3)
@@ -83,6 +97,11 @@ public class BlurSetting : MonoBehaviour {
 			heart1.enabled = false;
 			heart2.pitch = 2;
 			heart2.enabled = true;
+			flashLight.GetComponent<Light>().intensity = Random.RandomRange(0.0f, 1.0f);
+			// Velocity settings
+			GetComponent<ExtendFlycam>().climbSpeed = 1;
+			GetComponent<ExtendFlycam>().climbSpeed = 2.5f;
+			GetComponent<ExtendFlycam>().cameraSensitivity = 60;
 		}
 		// Game over
 		if(timerZone3 > 10) Debug.Log("Game over");
@@ -98,9 +117,20 @@ public class BlurSetting : MonoBehaviour {
 		if(keyInHand && zoneDoor && Input.GetKeyDown(KeyCode.G)) 
 		{
 			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = false;
-			GameObject.Find("[Door] - Animator").GetComponent<Animator>().SetTrigger("CloseDoor");
-			zoneDoor = false;
+			GameObject.Find("[Door] - Animator").GetComponent<Animator>().SetTrigger("OpenDoor");
 			keyInHand = false;
+			doorOpened = true;
+			clown1.enabled = true;
+		}
+		if(doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
+		{
+			if(GameObject.Find("[Door] - Animator").transform.localPosition == new Vector3(-2.69f,
+			GameObject.Find("[Door] - Animator").transform.localPosition.y,
+			GameObject.Find("[Door] - Animator").transform.localPosition.z))
+			{
+				GameObject.Find("[Door] - Animator").GetComponent<Animator>().SetTrigger("CloseDoor");
+				doorOpened = false;
+			}
 		}
 	}
 	private void OnTriggerEnter(Collider other)
@@ -148,5 +178,9 @@ public class BlurSetting : MonoBehaviour {
 			zoneDoor = false;
 			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = false;
 		}
+	}
+	private void ClownLaughing()
+	{
+
 	}
 }
