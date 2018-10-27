@@ -15,6 +15,7 @@ public class CharakterSetting : MonoBehaviour {
 	private UnityStandardAssets.ImageEffects.BlurOptimized BlurOptimized;
 	private UnityStandardAssets.ImageEffects.MotionBlur MotionBlur;
 	private UnityStandardAssets.ImageEffects.Fisheye FishEye;
+	private UnityStandardAssets.ImageEffects.NoiseAndScratches NoiseAndScratches;
 	private float speed = 1f;
 	private float speedFishEye = 0.75f;
 	private float speedFlashLight = 0.1f;
@@ -29,31 +30,35 @@ public class CharakterSetting : MonoBehaviour {
 	private float timerZone1 = 0;
 	private float timerZone2 = 0;
 	private float timerZone3 = 0;
+	private float timeToDead = 30f;
 	// Use this for initialization
 	void Start () {
 		BlurOptimized = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.BlurOptimized>();
 		MotionBlur = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>();
 		FishEye = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.Fisheye>();
+		NoiseAndScratches = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.NoiseAndScratches>();
 		flashLight = GameObject.Find("[FlashLight]");
 		flashLightObject = GameObject.Find("Taschenlampe");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		// Noise
+		timeToDead = Time.time / 100;
+		NoiseAndScratches.grainIntensityMin = Mathf.Lerp(0, 0.5f, timeToDead);
+		NoiseAndScratches.grainIntensityMax = Mathf.Lerp(0, 0.5f, timeToDead);
+		// Flashlight 
 		flashLight.transform.localRotation = new Quaternion (flashLight.transform.localRotation.x,
-		Random.RandomRange(0.01f, 0.02f),
-		flashLight.transform.localRotation.z,
-		flashLight.transform.localRotation.w);
+			Random.RandomRange(0.01f, 0.02f),
+			flashLight.transform.localRotation.z,
+			flashLight.transform.localRotation.w);
 		flashLight.transform.localPosition = new Vector3 (Mathf.PingPong(Time.time * speedFlashLight, 0.1f),
-		flashLight.transform.localPosition.y,
-		flashLight.transform.localPosition.z);
-		//flashLightObject.transform.localRotation = new Quaternion (5.943967f,
-		//Random.RandomRange(0.01f, 0.02f),
-		//359.4937f,
-		//flashLightObject.transform.localRotation.w);
+			flashLight.transform.localPosition.y,
+			flashLight.transform.localPosition.z);
 		flashLightObject.transform.localPosition = new Vector3 (Mathf.PingPong(Time.time * speedFlashLight, 0.1f),
-		flashLightObject.transform.localPosition.y,
-		flashLightObject.transform.localPosition.z);
+			flashLightObject.transform.localPosition.y,
+			flashLightObject.transform.localPosition.z);
+		// Velocity Off
 		mainCamera.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		// Zone 1
 		if(zone1)
