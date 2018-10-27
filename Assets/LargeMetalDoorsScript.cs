@@ -5,7 +5,7 @@ using UnityEngine;
 public class LargeMetalDoorsScript : MonoBehaviour {
 	private bool zoneDoor = false;
 	private bool doorOpened = false;
-	private bool warten = true;
+	private bool warten = false;
 
 	// Use this for initialization
 	void Start () {
