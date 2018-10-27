@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlurSetting : MonoBehaviour {
+public class CharakterSetting : MonoBehaviour {
 	public GameObject mainCamera;
+	private GameObject flashLight;
 	public AudioSource breathe1;
 	public AudioSource breathe2;
 	public AudioSource breathe3;
@@ -29,6 +30,7 @@ public class BlurSetting : MonoBehaviour {
 		BlurOptimized = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.BlurOptimized>();
 		MotionBlur = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>();
 		FishEye = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.Fisheye>();
+		flashLight = GameObject.Find("[FlashLight]");
 	}
 	
 	// Update is called once per frame
@@ -47,6 +49,7 @@ public class BlurSetting : MonoBehaviour {
 			breathe3.enabled = false;
 			heart1.enabled = true;
 			heart2.enabled = false;
+			flashLight.GetComponent<Light>().intensity = 1;
 		}
 		// Zone 2
 		if(zone2)
@@ -65,6 +68,7 @@ public class BlurSetting : MonoBehaviour {
 			heart1.enabled = false;
 			heart2.pitch = 1;
 			heart2.enabled = true;
+			flashLight.GetComponent<Light>().intensity = Random.RandomRange(0.5f, 1.0f);
 		}
 		// Zone 3
 		if(zone3)
@@ -83,6 +87,7 @@ public class BlurSetting : MonoBehaviour {
 			heart1.enabled = false;
 			heart2.pitch = 2;
 			heart2.enabled = true;
+			flashLight.GetComponent<Light>().intensity = Random.RandomRange(0.0f, 1.0f);
 		}
 		// Game over
 		if(timerZone3 > 10) Debug.Log("Game over");
