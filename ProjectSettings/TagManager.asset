@@ -4,6 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Zone_1
+  - Zone_2
+  - Zone_3
+  - Key
+  - Door
   - Trap
   layers:
   - Default

@@ -16,6 +16,7 @@ public class PlayerCharacter : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        other.CompareTag("")
         print("Ouch!");
     }
 }

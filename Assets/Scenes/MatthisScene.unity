@@ -1302,8 +1302,8 @@ MonoBehaviour:
   breathe1: {fileID: 934221539}
   breathe2: {fileID: 1969082345}
   breathe3: {fileID: 350438164}
-  speed: 1
-  speedFishEye: 0.75
+  heart1: {fileID: 0}
+  heart2: {fileID: 0}
   zone1: 1
   zone2: 0
   zone3: 0
