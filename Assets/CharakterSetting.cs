@@ -21,7 +21,7 @@ public class CharakterSetting : MonoBehaviour {
 	private float speedFlashLight = 0.1f;
 	public bool zone1 = false;
 	public bool zone2 = false;
-	public bool zone3 = false;;
+	public bool zone3 = false;
 	private float timerZone1 = 0;
 	private float timerZone2 = 0;
 	private float timerZone3 = 0;
