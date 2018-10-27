@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4044232022544190}
   - component: {fileID: 95173575336593588}
   m_Layer: 0
-  m_Name: HebelPrefab
+  m_Name: Hebel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

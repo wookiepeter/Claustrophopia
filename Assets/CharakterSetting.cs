@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharakterSetting : MonoBehaviour {
 	public GameObject mainCamera;
+	public bool allEffectsOff = false;
 	private GameObject flashLight;
 	private GameObject flashLightObject;
 	public AudioSource breathe1;
@@ -24,9 +25,12 @@ public class CharakterSetting : MonoBehaviour {
 	public bool zone3 = false;
 	private bool zoneKey = false;
 	private bool zoneDoor = false;
+	private bool zoneLever = false;
 	private bool keyInHand = false;
 	private GameObject key;
 	private bool doorOpened = false;
+	private bool leverPulled = false;
+	private bool leverRaised = false;
 	private float timerZone1 = 0;
 	private float timerZone2 = 0;
 	private float timerZone3 = 0;
@@ -155,6 +159,12 @@ public class CharakterSetting : MonoBehaviour {
 				doorOpened = false;
 			}
 		}
+		if(!leverPulled && zoneLever && Input.GetKeyDown(KeyCode.G))
+		{
+			GameObject.Find("[Hebel]").GetComponent<Animator>().SetTrigger("LeverPull");
+			leverPulled = true;
+			leverRaised = false;
+		}
 	}
 	private void OnTriggerEnter(Collider other)
     {
@@ -187,6 +197,11 @@ public class CharakterSetting : MonoBehaviour {
 			zoneDoor = true;
 			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = true;
 		}
+		if(other.tag == "Lever")
+		{
+			zoneLever = true;
+			//GameObject.Find("[Key] - Press G to put the key").GetComponent<UnityEngine.UI.Text>().enabled = true;
+		}
     }
 	private void OnTriggerExit(Collider other)
     {
@@ -200,6 +215,11 @@ public class CharakterSetting : MonoBehaviour {
 		{
 			zoneDoor = false;
 			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = false;
+		}
+		if(other.tag == "Lever")
+		{
+			zoneLever = false;
+			//GameObject.Find("[Key] - Press G to put the key").GetComponent<UnityEngine.UI.Text>().enabled = false;
 		}
 	}
 	private void ClownLaughing()
