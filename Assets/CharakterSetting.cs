@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharakterSetting : MonoBehaviour {
 	public GameObject mainCamera;
 	private GameObject flashLight;
+	private GameObject flashLightObject;
 	public AudioSource breathe1;
 	public AudioSource breathe2;
 	public AudioSource breathe3;
@@ -16,6 +17,7 @@ public class CharakterSetting : MonoBehaviour {
 	private UnityStandardAssets.ImageEffects.Fisheye FishEye;
 	private float speed = 1f;
 	private float speedFishEye = 0.75f;
+	private float speedFlashLight = 0.1f;
 	public bool zone1 = false;
 	public bool zone2 = false;
 	public bool zone3 = false;
@@ -23,6 +25,7 @@ public class CharakterSetting : MonoBehaviour {
 	private bool zoneDoor = false;
 	private bool keyInHand = false;
 	private GameObject key;
+	private bool doorOpened = false;
 	private float timerZone1 = 0;
 	private float timerZone2 = 0;
 	private float timerZone3 = 0;
@@ -32,10 +35,25 @@ public class CharakterSetting : MonoBehaviour {
 		MotionBlur = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.MotionBlur>();
 		FishEye = mainCamera.GetComponent<UnityStandardAssets.ImageEffects.Fisheye>();
 		flashLight = GameObject.Find("[FlashLight]");
+		flashLightObject = GameObject.Find("Taschenlampe");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		flashLight.transform.localRotation = new Quaternion (flashLight.transform.localRotation.x,
+		Random.RandomRange(0.01f, 0.02f),
+		flashLight.transform.localRotation.z,
+		flashLight.transform.localRotation.w);
+		flashLight.transform.localPosition = new Vector3 (Mathf.PingPong(Time.time * speedFlashLight, 0.1f),
+		flashLight.transform.localPosition.y,
+		flashLight.transform.localPosition.z);
+		//flashLightObject.transform.localRotation = new Quaternion (5.943967f,
+		//Random.RandomRange(0.01f, 0.02f),
+		//359.4937f,
+		//flashLightObject.transform.localRotation.w);
+		flashLightObject.transform.localPosition = new Vector3 (Mathf.PingPong(Time.time * speedFlashLight, 0.1f),
+		flashLightObject.transform.localPosition.y,
+		flashLightObject.transform.localPosition.z);
 		mainCamera.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		// Zone 1
 		if(zone1)
@@ -116,10 +134,21 @@ public class CharakterSetting : MonoBehaviour {
 		if(keyInHand && zoneDoor && Input.GetKeyDown(KeyCode.G)) 
 		{
 			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = false;
-			GameObject.Find("[Door] - Animator").GetComponent<Animator>().SetTrigger("CloseDoor");
-			zoneDoor = false;
+			GameObject.Find("[Door] - Animator").GetComponent<Animator>().SetTrigger("OpenDoor");
 			keyInHand = false;
+			doorOpened = true;
 			clown1.enabled = true;
+			GameObject.Find("Clown").GetComponent<Animator>().SetTrigger("ClownMove");
+		}
+		if(doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
+		{
+			if(GameObject.Find("[Door] - Animator").transform.localPosition == new Vector3(-2.69f,
+				GameObject.Find("[Door] - Animator").transform.localPosition.y,
+				GameObject.Find("[Door] - Animator").transform.localPosition.z))
+			{
+				GameObject.Find("[Door] - Animator").GetComponent<Animator>().SetTrigger("CloseDoor");
+				doorOpened = false;
+			}
 		}
 	}
 	private void OnTriggerEnter(Collider other)
@@ -167,5 +196,9 @@ public class CharakterSetting : MonoBehaviour {
 			zoneDoor = false;
 			GameObject.Find("[Key] - Press G to open the door").GetComponent<UnityEngine.UI.Text>().enabled = false;
 		}
+	}
+	private void ClownLaughing()
+	{
+
 	}
 }
