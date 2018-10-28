@@ -425,8 +425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  TargetDistance: 3
-  AllowedDistance: 1
+  TargetDistance: 5
+  AllowedDistance: 3
   Ghost: {fileID: 1633952022430660}
   FollowSpeed: 0
 --- !u!137 &137480596730298478
