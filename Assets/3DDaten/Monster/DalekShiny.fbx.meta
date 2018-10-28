@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: e6f2142c8e66b55498cd779a985d8e09
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Arm1
+    100002: Dalek Motion
+    100004: //RootNode
+    100006: Dome
+    100008: Eyestalk
+    100010: Gun
+    100012: Gun 1
+    100014: Gun_end
+    100016: Head Track
+    100018: Head Track_end
+    100020: Neck
+    100022: Plunger
+    100024: Plunger_end
+    100026: Shoulder Rot
+    100028: Skirt
+    100030: Slats
+    100032: Sphere
+    400000: Arm1
+    400002: Dalek Motion
+    400004: //RootNode
+    400006: Dome
+    400008: Eyestalk
+    400010: Gun
+    400012: Gun 1
+    400014: Gun_end
+    400016: Head Track
+    400018: Head Track_end
+    400020: Neck
+    400022: Plunger
+    400024: Plunger_end
+    400026: Shoulder Rot
+    400028: Skirt
+    400030: Slats
+    400032: Sphere
+    2100000: Material.002
+    2100002: Material.004
+    2100004: Material.003
+    2100006: Base
+    2100008: Eye Bulb
+    2100010: Bronze
+    2100012: Gold
+    2100014: Eye Glass
+    2100016: Plunger
+    2100018: Material
+    2300000: Arm1
+    2300002: Dome
+    2300004: Eyestalk
+    2300006: Gun 1
+    2300008: Neck
+    2300010: Skirt
+    2300012: Slats
+    2300014: Sphere
+    3300000: Arm1
+    3300002: Dome
+    3300004: Eyestalk
+    3300006: Gun 1
+    3300008: Neck
+    3300010: Skirt
+    3300012: Slats
+    3300014: Sphere
+    4300000: Slats
+    4300002: Arm1
+    4300004: Gun
+    4300006: Dome
+    4300008: Eyestalk
+    4300010: Skirt
+    4300012: Sphere
+    4300014: Neck
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

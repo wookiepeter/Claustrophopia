@@ -1,0 +1,196 @@
+fileFormatVersion: 2
+guid: 9274ca7bed393684980bf128c74a945e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: arm_L
+    100002: arm_R
+    100004: Armature
+    100006: Bone
+    100008: chest
+    100010: eyebrow1_L
+    100012: eyebrow1_R
+    100014: eyebrow2_L
+    100016: eyebrow2_R
+    100018: foot_L
+    100020: foot_R
+    100022: //RootNode
+    100024: head
+    100026: hip
+    100028: hip_L
+    100030: hip_R
+    100032: indexf1_L
+    100034: indexf1_R
+    100036: indexf2_L
+    100038: indexf2_R
+    100040: indexf3_L
+    100042: indexf3_R
+    100044: jaws
+    100046: leg1_L
+    100048: leg1_R
+    100050: leg2_L
+    100052: leg2_R
+    100054: master
+    100056: Plane
+    100058: shoulder_L
+    100060: shoulder_R
+    100062: spine
+    100064: stone
+    100066: stone_golem
+    100068: thumb1_L
+    100070: thumb1_R
+    100072: thumb2_L
+    100074: thumb2_R
+    100076: Thumb3_L
+    100078: Thumb3_R
+    100080: upperhand_L
+    100082: upperhand_R
+    100084: widef1_L
+    100086: widef1_R
+    100088: widef2_L
+    100090: widef2_R
+    100092: widef3_L
+    100094: widef3_R
+    400000: arm_L
+    400002: arm_R
+    400004: Armature
+    400006: Bone
+    400008: chest
+    400010: eyebrow1_L
+    400012: eyebrow1_R
+    400014: eyebrow2_L
+    400016: eyebrow2_R
+    400018: foot_L
+    400020: foot_R
+    400022: //RootNode
+    400024: head
+    400026: hip
+    400028: hip_L
+    400030: hip_R
+    400032: indexf1_L
+    400034: indexf1_R
+    400036: indexf2_L
+    400038: indexf2_R
+    400040: indexf3_L
+    400042: indexf3_R
+    400044: jaws
+    400046: leg1_L
+    400048: leg1_R
+    400050: leg2_L
+    400052: leg2_R
+    400054: master
+    400056: Plane
+    400058: shoulder_L
+    400060: shoulder_R
+    400062: spine
+    400064: stone
+    400066: stone_golem
+    400068: thumb1_L
+    400070: thumb1_R
+    400072: thumb2_L
+    400074: thumb2_R
+    400076: Thumb3_L
+    400078: Thumb3_R
+    400080: upperhand_L
+    400082: upperhand_R
+    400084: widef1_L
+    400086: widef1_R
+    400088: widef2_L
+    400090: widef2_R
+    400092: widef3_L
+    400094: widef3_R
+    2100000: Material
+    2100002: Material_002
+    2100004: Material_001
+    2300000: Plane
+    3300000: Plane
+    4300000: stone
+    4300002: stone_golem
+    4300004: Plane
+    7400000: Default Take
+    9500000: //RootNode
+    13700000: stone
+    13700002: stone_golem
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
