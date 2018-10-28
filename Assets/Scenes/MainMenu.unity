@@ -127,7 +127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &44193157
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1442,7 +1442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1112581923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1718,8 +1718,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -77}
-  m_SizeDelta: {x: 450, y: 350}
+  m_AnchoredPosition: {x: 0, y: -386.4}
+  m_SizeDelta: {x: 450, y: 968.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1505456463
 MonoBehaviour:
@@ -1766,8 +1766,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "hech hwjhvcwevjhewv\nujevrne j ne \nqerhzvbeqrvhjbeq\nrevnuqezv bhujqev\nqvrnqhzv
-    bhjqerv b\nvnqurevbuihzbqr\nvmqruevbbqerzui\nvnurqnvuirqenv\nzubvrqu\nvnru7qnviirqev\n"
+  m_Text: "Game Developer:\nMatthis Hagen\nEdgar Grendatsch\nOleksii Surzhenko\nAndre
+    Linke\n\n3D-Designer:\nMatthis Hagen\nEdgar Grendatsch\nOleksii Surzhenko\nAndre
+    Linke\n\nLevel-Designer:\nMatthis Hagen\nEdgar Grendatsch\nOleksii Surzhenko\n\nSound-Designer:\nCreative
+    Sound Director\nJan-Cord Gerken\nSound Assistent\nAndre Linke\n\n3D-Models von
+    blendswap:\nOliverMH ---   Furniture Pack (Low Poly) CopperStache --- BGE - Large
+    Metal Doors \r\n\ryd  ---  Dungeon Set 1: Brunstom \r\nhendori-sama --- GOLEM
+    \n\rBenjee10 --- Dalek v1.0\r\n\rRookieProject --- Practice Dummy\r\n\ropulenthawk
+    --- Cookie Monster"
 --- !u!222 &1505456465
 CanvasRenderer:
   m_ObjectHideFlags: 0
