@@ -11,6 +11,7 @@ TagManager:
   - Door
   - Trap
   - Lever
+  - Lamp
   layers:
   - Default
   - TransparentFX
