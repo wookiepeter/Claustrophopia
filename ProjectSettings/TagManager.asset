@@ -12,6 +12,7 @@ TagManager:
   - Trap
   - Lever
   - Lamp
+  - Zone_4
   layers:
   - Default
   - TransparentFX
