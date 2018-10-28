@@ -21,7 +21,7 @@ public class CharakterSetting : MonoBehaviour {
     public bool zone3 = false;
     public bool zone4 = false;
 	private float timerStress = 0;
-	private int stressFaktor = 0;
+	public int stressFaktor = 0;
 	private int maxStressFaktor = 1000;
     // Use this for initialization
     void Start () {
