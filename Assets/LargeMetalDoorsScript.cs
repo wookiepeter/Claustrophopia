@@ -22,14 +22,14 @@ public class LargeMetalDoorsScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Door - Hebel
-		if(!doorLock && !warten && !doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
+		if(!doorLock && !warten && !doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.E))
 		{
 				GetComponent<Animator>().SetTrigger("LargeDoorOpen");
 				metallDoorAudioSource.clip = metallDoorOpenAudioClip;
 				metallDoorAudioSource.Play();
 				StartCoroutine(WaitDoor());
 		}
-		if(!doorLock && !warten && doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
+		if(!doorLock && !warten && doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.E))
 		{
 				GetComponent<Animator>().SetTrigger("LargeDoorClose");
 				metallDoorAudioSource.clip = metallDoorCloseAudioClip;
