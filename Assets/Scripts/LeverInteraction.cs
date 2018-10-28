@@ -50,7 +50,7 @@ public class LeverInteraction : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Lever"))
+        if (other.CompareTag("Lever") || other.tag == "Player")
         {
             inLeverRange = true;
             activeLever = other.GetComponent<LeverController>();
@@ -59,7 +59,7 @@ public class LeverInteraction : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Lever"))
+        if (other.CompareTag("Lever") || other.tag == "Player")
         {
             inLeverRange = false;
         }
