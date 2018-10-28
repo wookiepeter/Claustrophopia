@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class CharakterSetting : MonoBehaviour {
 	public GameObject mainCamera;
-	public bool allEffectsOff = false;
 	private GameObject flashLight;
 	private GameObject flashLightObject;
-	public AudioSource breathe1;
-	public AudioSource breathe2;
-	public AudioSource breathe3;
-	public AudioSource heart1;
-	public AudioSource heart2;
+	private AudioSource breathe1AudioSource;
+	private AudioSource breathe2AudioSource;
+	private AudioSource breathe3AudioSource;
+	private AudioSource heart1AudioSource;
+	private AudioSource heart2AudioSource;
 	private UnityStandardAssets.ImageEffects.BlurOptimized BlurOptimized;
 	private UnityStandardAssets.ImageEffects.MotionBlur MotionBlur;
 	private UnityStandardAssets.ImageEffects.Fisheye FishEye;
@@ -22,9 +21,11 @@ public class CharakterSetting : MonoBehaviour {
 	public bool zone1 = false;
 	public bool zone2 = false;
 	public bool zone3 = false;
+	public bool zone4 = false;
 	private float timerZone1 = 0;
 	private float timerZone2 = 0;
 	private float timerZone3 = 0;
+	private float timerZone4 = 0;
 	private float timeToDead = 30f;
 	// Use this for initialization
 	void Start () {
@@ -34,11 +35,11 @@ public class CharakterSetting : MonoBehaviour {
 		NoiseAndScratches = 	GetComponent<UnityStandardAssets.ImageEffects.NoiseAndScratches>();
 		flashLight = 			GameObject.Find("[FlashLight]");
 		flashLightObject = 		GameObject.Find("Taschenlampe");
-		breathe1 = 				GameObject.Find("Breathe_Zone_1").GetComponent<AudioSource>();
-		breathe2 = 				GameObject.Find("Breathe_Zone_2").GetComponent<AudioSource>();
-		breathe3 = 				GameObject.Find("Breathe_Zone_3").GetComponent<AudioSource>();
-		heart1 = 				GameObject.Find("Heart_beat_1").GetComponent<AudioSource>();
-		heart2 = 				GameObject.Find("Heart_beat_2").GetComponent<AudioSource>();
+		breathe1AudioSource = 	GameObject.Find("[Audio]/Breathe_Zone_1").GetComponent<AudioSource>();
+		breathe2AudioSource = 	GameObject.Find("[Audio]/Breathe_Zone_2").GetComponent<AudioSource>();
+		breathe3AudioSource = 	GameObject.Find("[Audio]/Breathe_Zone_3").GetComponent<AudioSource>();
+		heart1AudioSource = 	GameObject.Find("[Audio]/Heart_beat_1").GetComponent<AudioSource>();
+		heart2AudioSource = 	GameObject.Find("[Audio]/Heart_beat_2").GetComponent<AudioSource>();
 	}
 	// Update is called once per frame
 	void Update () {
@@ -62,22 +63,18 @@ public class CharakterSetting : MonoBehaviour {
 
 		// Velocity Off
 		GetComponent<Rigidbody>().velocity = Vector3.zero;
-
 		// Zone 1
 		if(zone1)
 		{
-			// Effects
-			timerZone1 += Time.deltaTime;
-			timerZone2 = 0;
-			timerZone3 = 0;
-			BlurOptimized.blurSize = Mathf.PingPong(Time.time * speedBlur, 3.33f);
-			MotionBlur.blurAmount = Mathf.PingPong(Time.time * speedBlur, 0.33f);
+			BlurOptimized.enabled = false;
+			MotionBlur.enabled = false;
+			FishEye.enabled = false;
 			// Audio
-			breathe1.enabled = true;
-			breathe2.enabled = false;
-			breathe3.enabled = false;
-			heart1.enabled = true;
-			heart2.enabled = false;
+			breathe1AudioSource.enabled = true;
+			breathe2AudioSource.enabled = false;
+			breathe3AudioSource.enabled = false;
+			heart1AudioSource.enabled = true;
+			heart2AudioSource.enabled = false;
 			// Flash light
 			flashLight.GetComponent<Light>().intensity = 1;
 			// Velocity settings
@@ -89,21 +86,50 @@ public class CharakterSetting : MonoBehaviour {
 		if(zone2)
 		{
 			// Effects
+			timerZone1 += Time.deltaTime;
+			timerZone2 = 0;
+			timerZone3 = 0;
+			timerZone4 = 0;
+			BlurOptimized.enabled = true;
+			MotionBlur.enabled = true;
+			FishEye.enabled = false;
+			BlurOptimized.blurSize = Mathf.PingPong(Time.time * speedBlur, 3.33f);
+			MotionBlur.blurAmount = Mathf.PingPong(Time.time * speedBlur, 0.33f);
+			// Audio
+			breathe1AudioSource.enabled = true;
+			breathe2AudioSource.enabled = false;
+			breathe3AudioSource.enabled = false;
+			heart1AudioSource.enabled = true;
+			heart2AudioSource.enabled = false;
+			// Flash light
+			flashLight.GetComponent<Light>().intensity = 1;
+			// Velocity settings
+			GetComponent<ExtendFlycam>().climbSpeed = 2;
+			GetComponent<ExtendFlycam>().climbSpeed = 5;
+			GetComponent<ExtendFlycam>().cameraSensitivity = 90;
+		}
+		// Zone 2
+		if(zone3)
+		{
+			// Effects
 			timerZone1 = 0;
 			timerZone2 += Time.deltaTime;
 			timerZone3 = 0;
 			speedFishEye = 0.1f;
+			BlurOptimized.enabled = true;
+			MotionBlur.enabled = true;
+			FishEye.enabled = true;
 			BlurOptimized.blurSize = Mathf.PingPong(Time.time * speedBlur, 6.66f);
 			MotionBlur.blurAmount = Mathf.PingPong(Time.time * speedBlur, 0.66f);
 			FishEye.strengthX = Mathf.PingPong(Time.time * speedFishEye, 0.1f);
 			FishEye.strengthY = Mathf.PingPong(Time.time * speedFishEye, 0.1f);
 			// Audio
-			breathe1.enabled = false;
-			breathe2.enabled = true;
-			breathe3.enabled = false;
-			heart1.enabled = false;
-			heart2.pitch = 1;
-			heart2.enabled = true;
+			breathe1AudioSource.enabled = false;
+			breathe2AudioSource.enabled = true;
+			breathe3AudioSource.enabled = false;
+			heart1AudioSource.enabled = false;
+			heart2AudioSource.pitch = 1;
+			heart2AudioSource.enabled = true;
 			// Flash light
 			flashLight.GetComponent<Light>().intensity = Random.RandomRange(0.5f, 1.0f);
 			// Velocity settings
@@ -112,24 +138,27 @@ public class CharakterSetting : MonoBehaviour {
 			GetComponent<ExtendFlycam>().cameraSensitivity = 75;
 		}
 		// Zone 3
-		if(zone3)
+		if(zone4)
 		{
 			// Effects
 			timerZone1 = 0;
 			timerZone2 = 0;
 			timerZone3 += Time.deltaTime;
 			speedFishEye = 0.5f;
+			BlurOptimized.enabled = true;
+			MotionBlur.enabled = true;
+			FishEye.enabled = true;
 			BlurOptimized.blurSize = Mathf.PingPong(Time.time * speedBlur, 10f);
 			MotionBlur.blurAmount = Mathf.PingPong(Time.time * speedBlur, 0.92f);
 			FishEye.strengthX = Mathf.PingPong(Time.time * speedFishEye, 0.3f);
 			FishEye.strengthY = Mathf.PingPong(Time.time * speedFishEye, 0.3f);
 			// Audio
-			breathe1.enabled = false;
-			breathe2.enabled = false;
-			breathe3.enabled = true;
-			heart1.enabled = false;
-			heart2.pitch = 2;
-			heart2.enabled = true;
+			breathe1AudioSource.enabled = false;
+			breathe2AudioSource.enabled = false;
+			breathe3AudioSource.enabled = true;
+			heart1AudioSource.enabled = false;
+			heart2AudioSource.pitch = 2;
+			heart2AudioSource.enabled = true;
 			// Flash light
 			flashLight.GetComponent<Light>().intensity = Random.RandomRange(0.0f, 1.0f);
 			// Velocity settings
@@ -145,24 +174,47 @@ public class CharakterSetting : MonoBehaviour {
 			zone1 = true;
 			zone2 = false;
 			zone3 = false;
+			zone4 = false;
 		}
 		if(other.tag == "Zone_2")
 		{
 			zone1 = false;
 			zone2 = true;
 			zone3 = false;
+			zone4 = false;
 		}
 		if(other.tag == "Zone_3")
 		{
 			zone1 = false;
 			zone2 = false;
 			zone3 = true;
+			zone4 = false;
+		}
+		if(other.tag == "Zone_4")
+		{
+			zone1 = false;
+			zone2 = false;
+			zone3 = false;
+			zone4 = true;
 		}
     }
 	private void OnTriggerExit(Collider other)
     {
-	}
-	private void ClownLaughing()
-	{
+		if(other.tag == "Zone_1")
+		{
+			zone1 = false;
+		}
+		if(other.tag == "Zone_2")
+		{
+			zone2 = false;
+		}
+		if(other.tag == "Zone_3")
+		{
+			zone3 = false;
+		}
+		if(other.tag == "Zone_4")
+		{
+			zone4 = false;
+		}
 	}
 }
