@@ -31,7 +31,7 @@ public class LargeMetalDoorsScript : MonoBehaviour {
 		{
 				GetComponent<Animator>().SetTrigger("LargeDoorClose");
 				metallDoorAudioSource.clip = metallDoorCloseAudioClip;
-				StartCoroutine(MetallDoorClose());
+				metallDoorAudioSource.Play();
 				StartCoroutine(WaitDoor());
 		}
 	}
