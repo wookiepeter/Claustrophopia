@@ -6,10 +6,15 @@ public class LargeMetalDoorsScript : MonoBehaviour {
 	private bool zoneDoor = false;
 	private bool doorOpened = false;
 	private bool warten = false;
+	private AudioSource metallDoorAudioSource;
+    private AudioClip metallDoorOpenAudioClip;
+	private AudioClip metallDoorCloseAudioClip;
 
 	// Use this for initialization
 	void Start () {
-		
+        metallDoorOpenAudioClip = Resources.Load<AudioClip>("Audio/metal_door_open_1");
+		metallDoorCloseAudioClip = Resources.Load<AudioClip>("Audio/metal_door_close_1");
+        metallDoorAudioSource = gameObject.AddComponent<AudioSource>() as AudioSource;
 	}
 	
 	// Update is called once per frame
@@ -18,11 +23,15 @@ public class LargeMetalDoorsScript : MonoBehaviour {
 		if(!warten && !doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
 		{
 				GetComponent<Animator>().SetTrigger("LargeDoorOpen");
+				metallDoorAudioSource.clip = metallDoorOpenAudioClip;
+				metallDoorAudioSource.Play();
 				StartCoroutine(WaitDoor());
 		}
 		if(!warten && doorOpened && zoneDoor && Input.GetKeyDown(KeyCode.G))
 		{
 				GetComponent<Animator>().SetTrigger("LargeDoorClose");
+				metallDoorAudioSource.clip = metallDoorCloseAudioClip;
+				StartCoroutine(MetallDoorClose());
 				StartCoroutine(WaitDoor());
 		}
 	}
@@ -54,5 +63,10 @@ public class LargeMetalDoorsScript : MonoBehaviour {
 		{
 			doorOpened = false;
 		}
+	}
+	private IEnumerator MetallDoorClose()
+	{
+		yield return new WaitForSeconds(0.75f);
+		metallDoorAudioSource.Play();
 	}
 }
