@@ -125,10 +125,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4992893510897062}
-  - component: {fileID: 95924563026582880}
   - component: {fileID: 111281687356968584}
   - component: {fileID: 114566152808869804}
   - component: {fileID: 114950588320060358}
+  - component: {fileID: 95274574005160774}
   m_Layer: 0
   m_Name: Ghost_White
   m_TagString: Untagged
@@ -363,7 +363,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95924563026582880
+--- !u!95 &95274574005160774
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -371,11 +371,11 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1633952022430660}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: fd4b310424927a840906404a14eeb5e4, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4fc8b2e5b09a94f46846a7febc2f361e, type: 2}
+  m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  TargetDistance: 0
+  TargetDistance: 3
   AllowedDistance: 1
   Ghost: {fileID: 1633952022430660}
   FollowSpeed: 0

@@ -6,10 +6,16 @@ public class LevelManager : MonoBehaviour
 {
 
     [SerializeField]
+    GameObject player;
+
+    [SerializeField]
     GameObject[] querReihen;
 
     [SerializeField]
-    Vector3 UnitTile = new Vector3(3.67f, 0, 3.67f);
+    Vector3 UnitTile = new Vector3(3.67f, 0, -3.67f);
+
+    [SerializeField]
+    Vector3 StartingPoint = new Vector3(0, 0, 0);
 
     [SerializeField]
     int squareSize = 12;
@@ -19,9 +25,22 @@ public class LevelManager : MonoBehaviour
 
     string[] asciiMap;
 
+    [SerializeField]
+    PetFollower GhostPrefab;
+
+    [SerializeField]
+    GameObject GummyBear;
+
+    [SerializeField]
+    GameObject examSolutions;
+
+    [SerializeField]
+    GameObject darlek;
+
     // Use this for initialization
     void Start()
     {
+        // StartingPoint = transform.position;        
         BuildMapArray();
     }
 
@@ -49,7 +68,7 @@ public class LevelManager : MonoBehaviour
                 oldPosition = go.transform.position;
             }
         }
-        BuildAsciiMap();
+        BuildAsciiMap(1);
         CheckMapArray();
     }
 
@@ -60,26 +79,44 @@ public class LevelManager : MonoBehaviour
         print(map[11, 11].gameObject.name);
     }
 
-    void BuildAsciiMap()
+    void BuildAsciiMap(int level)
     {
         // x --> 
         //   ^
         // z |
-        asciiMap = new string[] {
-            "############",
-            "#00000######",
-            "#0###000000#",
-            "#0###0####0#",
-            "#0###0####0#",
-            "#00000##000#",
-            "00###0##0000",
-            "0####000000#",
-            "0####0###0##",
-            "000000###0##",
-            "####0####0##",
-            "####000000##" };
 
-        GenerateGameTarget();
+        // pet p
+        // darlek d
+        // gummibär g
+        // examslösungen e
+        // ausgang a
+        asciiMap = new string[12];
+        switch (level)
+        {
+            case 1:
+                asciiMap = new string[] {
+                    "1p1111111111",
+                    "100000111111",
+                    "101e1000000g",
+                    "001110111101",
+                    "001110111101",
+                    "000000110001",
+                    "00111011000a",
+                    "01111000000#",
+                    "011110000011",
+                    "000000#11011",
+                    "11110111101g",
+                    "g111000000p1" };
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+        }
+
+        GenerateGameTargets();
 
         string arrayString = "";
         foreach (string s in asciiMap)
@@ -91,24 +128,37 @@ public class LevelManager : MonoBehaviour
         Debug.Log(arrayString);
     }
 
-    void GenerateGameTarget()
+    void GenerateGameTargets()
     {
-        Vector2Int targetPos;
-        while (true)
+        for (int x = 0; x < 12; x++)
         {
-            Vector2Int pos = new Vector2Int(Random.Range(0, 12), Random.Range(0, 12));
-            if (GetType(pos) == '0')
+            for(int z = 0; z < 12; z++)
             {
-                Vector2Int neighbor = new Vector2Int(Random.Range(0, 2), Random.Range(0, 2));
-                if (GetType(pos + neighbor) == '#')
+                char c = GetType(x, z);
+                switch (c)
                 {
-                    targetPos = pos + neighbor;
-                    break;
+                    case 'p':
+                        PetFollower p = Instantiate(GhostPrefab, GetTileCenter(new Vector2Int(x, z)), Quaternion.identity, transform);
+                        p.Player = player;
+                        break;
+                    case 'a':
+
+                        break;
+                    case 'd':
+
+                        break;
+                    case 'e':
+
+                        break;
                 }
             }
         }
-        SetType(targetPos, 't');
-        print("target is now " + GetType(targetPos));
+    }
+
+    Vector3 GetTileCenter(Vector2Int pos)
+    {
+        print("Position for pos: " + pos + " is " + StartingPoint + " + " + new Vector3(UnitTile.x * pos.x, 0, UnitTile.z * pos.y) + " = " + (StartingPoint + new Vector3(UnitTile.x * pos.x, 0, UnitTile.z * pos.y)));
+        return transform.position + StartingPoint + new Vector3(UnitTile.x * pos.x, 0, UnitTile.z * pos.y);
     }
 
     char GetType(int x, int z)
