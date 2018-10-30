@@ -10,7 +10,7 @@ public class LeverInteraction : MonoBehaviour {
     [SerializeField]
     LeverController activeLever;
 
-    bool inLeverRange;
+    public bool inLeverRange;
     bool lookingAtLever;
     bool displayingLeverMessage;
 

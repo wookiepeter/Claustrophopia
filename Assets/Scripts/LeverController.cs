@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LeverController : MonoBehaviour {
 
+    public LeverInteraction myLeverInteraction;
+
     [SerializeField]
     GameObject renderer;
 
@@ -13,7 +15,7 @@ public class LeverController : MonoBehaviour {
     bool leverisUp = true;
     [SerializeField]
     bool leverIsActive = false;
-
+    bool inReichweite; 
     [SerializeField]
     List<GateController> connectedGates;
     [SerializeField]
@@ -27,7 +29,9 @@ public class LeverController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (leverIsActive == false && Input.GetKeyDown("e"))
+        
+   
+        if (leverIsActive == false && Input.GetKeyDown("e")&& myLeverInteraction.inLeverRange)
         {
             print("activating lever");
             ToggleLever();
@@ -73,4 +77,5 @@ public class LeverController : MonoBehaviour {
             Gizmos.DrawLine(transform.position, gate.transform.position);
         }
     }
+    
 }
