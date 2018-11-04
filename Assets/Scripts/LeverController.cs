@@ -21,6 +21,11 @@ public class LeverController : MonoBehaviour {
     [SerializeField]
     Color gizmosColor = Color.green;
 
+    public bool LeverIsActive
+    {
+        get { return leverIsActive; }
+    }
+
 	// Use this for initialization
 	void Start () {
         animator = gameObject.GetComponent<Animator>();
@@ -29,13 +34,7 @@ public class LeverController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-   
-        if (leverIsActive == false && Input.GetKeyDown("e")&& myLeverInteraction.inLeverRange)
-        {
-            print("activating lever");
-            ToggleLever();
-        } else if (leverIsActive == true && animator.GetCurrentAnimatorStateInfo(0).IsTag("Stop"))
+        if (leverIsActive == true && animator.GetCurrentAnimatorStateInfo(0).IsTag("Stop"))
         {
             leverIsActive = false;
         }

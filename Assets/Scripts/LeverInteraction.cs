@@ -45,6 +45,11 @@ public class LeverInteraction : MonoBehaviour {
             activeLever.ToggleLeverText(false);
             activeLever = null;
         }
+
+        if (activeLever != null && activeLever.LeverIsActive == false && Input.GetKeyDown(KeyCode.E))
+        {
+            activeLever.ToggleLever();
+        }
         
 	}
 
